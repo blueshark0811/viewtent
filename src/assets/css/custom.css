@@ -1,0 +1,321 @@
+
+p, a {
+	font-size: 20px;
+}
+
+a {
+	text-decoration: none !important;
+}
+
+img {
+	cursor: pointer;
+	border-radius: 10px;
+}
+
+.btn {
+	outline-color: #020304 !important;
+}
+
+.social-buttons {
+	border-bottom: 1px solid #eee;
+	padding-bottom: 10px;
+	margin-bottom: 30px
+}
+
+.social-buttons button {
+	margin: 15px 0px;
+}
+
+.social-buttons button img{
+	width: 20px;
+	height: 20px;
+	margin-right: 10px
+}
+
+.new-interview-form,
+.company-form,
+.auth-form {
+    box-shadow: 0px 0px 10px #ccc;
+    padding: 80px 40px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.company-form p,
+.auth-form p {
+	line-height: 30px;
+	color : #999;
+}
+
+
+select {
+	height: 50px !important;
+}
+
+.navbar {
+	padding: 20px 60px;
+}
+
+.nav-item {
+	padding: 7px ;
+}
+
+.nav-item .username {
+	position: relative;
+	top: 8px;
+	cursor: pointer;
+	margin-left: 5px;
+}
+
+.thankyou-page, 
+.company-page,
+.interview-page, 
+.interview-process-page,
+.interview-view-page, 
+.dashboard-page {
+	background-color: #f7f7f7;
+    min-height: 150vh;
+}
+
+.page-header {
+	width: 100%;
+	display: inline-flex;
+	justify-content: space-between;
+	padding: 30px 120px;
+	background-color: #fff;
+	border-bottom: 1px solid #ccc;
+    box-shadow: 0px 3px 4px #ccc;
+}
+
+.page-title {
+	display: flex;
+}
+
+.page-title img {
+	width: 50px;
+	height: 50px;
+	margin-right: 20px;
+}
+
+.page-title p{
+	font-size: 35px !important;
+	font-weight: 600;
+	color: #000;
+}
+
+.page-controls {
+	text-align: right;
+}
+
+.page-controls .btn{
+/*	display: flex;
+	justify-content: space-between;*/
+	margin-left: 20px;
+}
+
+.page-content {
+	padding: 40px 120px;
+}
+
+input{
+	text-align: left !important;
+	cursor: text !important;
+	background-color: #ececec !important;
+}
+
+.page-content table {
+	
+}
+
+tr .name{
+	cursor: pointer;
+}
+
+td {
+	font-size: 20px;
+	padding: 25px 0px !important;
+}
+
+.user-avatar {
+	width: 50px;
+	height: 50px;
+	margin-right: 15px;
+	border-radius: 40px;
+}
+
+.choose-logo {
+	width: 100%;
+	margin: 40px 0px;
+	display: inline-flex;
+	justify-content: space-between;
+}
+
+.choose-logo img {
+	width: 60px;
+	height: 60px;
+}
+
+.choose-logo-btn {
+	margin: auto;
+	margin-left: 0px;
+	margin-right: 0px;
+	height: 40px;
+}
+
+/*.question-list {
+	margin-top: 40px;
+}
+*/
+.question {
+	display: flex;
+	padding: 35px 0px;
+    border-bottom: 1px solid #eceeef;
+}
+
+.question .play {
+	margin: auto;
+	margin-right: 60px;
+}
+
+.question .body {
+	display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.people-tab td {
+	width: 25%;
+}
+
+.people-tab .name {
+	width: 40%;
+}
+
+.people-tab table .action {
+	width: 10%;
+	text-align: right;
+}
+
+.people-tab .name img {
+	margin: auto;
+	margin-left: 0px;
+	margin-right: 15px;
+}
+
+.name p,
+.question .body p{
+    margin: auto;
+    margin-left: 0px;
+}
+
+
+.inter-form .info, 
+.name .info,
+.question .body .info{
+	color : #aaaaaa;
+	font-size: 18px;
+}
+
+.question .action {
+	margin: auto;
+    margin-right: 0px;
+}
+
+.more-info {
+	width: 25px;
+	margin-left: 20px;
+}
+
+.simple-player i{
+    padding: 17px 20px;
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #74b9ff;
+}
+
+.simple-player .fa-pause {
+    padding: 17px 17px;
+}
+
+
+.collapse-item {
+	padding-left: 70px;
+}
+
+
+.page-tab {
+	display: flex;
+	padding: 20px 0px;
+}
+
+.page-tab span {
+	cursor: pointer;
+	font-size: 20px;
+    margin-right: 70px;
+}
+
+.interview-page .page-header {
+	flex-direction: column;
+}
+
+.pt-active {
+	color : #74b9ff;
+}
+
+.question-form {
+	background-color : #f7f7f7;
+	padding: 40px 0px;
+	text-align: right;
+}
+
+.question-form button {
+	margin-top: 20px;
+}
+
+.question-text {
+	display: flex;
+}
+
+
+.question-text textarea {
+	font-size: 20px;
+}
+
+.question-form .question-input {
+	margin: auto;
+
+}
+
+.interview-process-page {
+	 background-color: #fff; 
+}
+
+.interview-process-page video {
+	display: none;
+}
+
+.inter-form {
+	background-color: #f4f4f4;
+	padding: 40px;
+}
+
+.inter-controls {
+    margin-bottom: 40px;
+}
+
+.inter-controls button {
+	margin-right: 20px;
+}
+
+.inter-question {
+	margin-bottom: 60px;
+	display: flex;
+}
+
+.inter-question p{
+	font-size: 30px;
+	margin: auto 20px;
+}
