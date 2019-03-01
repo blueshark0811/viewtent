@@ -9,8 +9,8 @@ import {
   LOGIN_PAGE_UNLOADED,
   AUTH_REQUIRED
 } from '../constants/actionTypes';
-import facebookImage from '../assets/images/facebook.png';
-import googleImage from '../assets/images/google.png';
+import linkedinImage from '../assets/images/square-linkedin-512.png';
+import googleImage from '../assets/images/new-google-favicon-512.png';
 import { GoogleLogin } from 'react-google-login';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 
@@ -106,129 +106,83 @@ class Login extends React.Component {
     return (
       <div className="auth-page">
         <div className="container page">
-          <div className="row wrapper">
-            { !this.state.detail?
-              <div className="col-md-4 col-xs-12 auth-form">
-                <h1 className="text-xs-center">Login to your account</h1>
-                <br />
-                <ListErrors errors={this.props.errors} />
-                <p className="text-xs-center">
-                  Don't have an account? 
-                  <Link to="/register">
-                    &nbsp; <b>Sign up</b>
-                  </Link>
-                </p>
-                <div className="social-buttons">
-                  <GoogleLogin
-                    clientId="516099579821-l5lito4f4rqqrqjraqbihv3pqptdv626.apps.googleusercontent.com"
-                    render={renderProps => (
-                      <button onClick={renderProps.onClick} className="form-control form-control-lg social-button">
-                        <img className="" src={ googleImage }/>
-                        <span>Google</span>
-                      </button>
-                    )}
-                    onSuccess={this.responseGoogle}
-                    onFailure={this.responseGoogle}
+        { !this.state.detail?
+          <div className="div-block-43-copy">
+            <div className="text-block-13">Login to your account</div>
+            <ListErrors errors={this.props.errors} />
+            <div className="div-block-44">
+              <div className="div-block-129-c7opy">
+                <a href="#" className="button-2 loginbutton w-inline-block">
+                  <img src={ googleImage } width="29" sizes="29px" alt="" className="login-button-images" />
+                  <div>Login with Google</div>
+                </a>
+                <a href="#" className="button-2 loginbutton w-inline-block">
+                  <img src={ linkedinImage } width="29" alt="" className="login-button-images" />
+                  <div>Login with Linkedin</div>
+                </a>
+              </div>
+              <div className="w-form">
+                <form id="email-form" name="email-form" onSubmit={this.submitForm(email, password)}>
+                  <input type="email" 
+                    className="textfield ful w-input" 
+                    maxLength="256" 
+                    name="Email" 
+                    placeholder="Email" 
+                    id="Email-2" 
+                    value={this.props.email}
+                    onChange={this.changeEmail} 
+                    required
+                    />
+                  <input type="password" 
+                    className="textfield ful w-input" 
+                    maxLength="256" 
+                    name="Email-3"
+                    placeholder="Password" 
+                    id="Email-3"
+                    value={this.props.password}
+                    onChange={this.changePassword} 
+                    required
                   />
-                  <FacebookLogin
-                    appId="2237602363227772"
-                    callback={this.responseFacebook}
-                    render={renderProps => (
-                      <button onClick={renderProps.onClick} className="form-control form-control-lg social-button">
-                        <img className="" src={ facebookImage } />
-                        <span>Facebook</span>
-                      </button>
-                    )}
-                  />
-                </div>
-                <form onSubmit={this.submitForm(email, password)}>
-                  <fieldset>
-
-                    <fieldset className="form-group">
-                      <input
-                        className="form-control form-control-lg"
-                        type="email"
-                        placeholder="Email"
-                        value={this.props.email}
-                        onChange={this.changeEmail} 
-                        required />
-                    </fieldset>
-
-                    <fieldset className="form-group">
-                      <input
-                        className="form-control form-control-lg"
-                        type="password"
-                        placeholder="Password"
-                        value={this.props.password}
-                        onChange={this.changePassword} 
-                        required />
-                    </fieldset>
-
-                    <fieldset className="form-group">
-                      <p>You can delete your submitted interview at any time.</p>
-                    </fieldset>
-
-                    <button
-                      className="btn btn-lg btn-primary form-control"
-                      type="submit"
-                      disabled={this.props.inProgress}>
-                      Log in
-                    </button>
-
-                  </fieldset>
+                  <button
+                    className="button-2 form-button w-inline-block"
+                    type="submit"
+                    disabled={this.props.inProgress}>
+                    Log in
+                    <img src="https://uploads-ssl.webflow.com/5c5f614abad523f096147dd0/5c5f699016bb6e1e8e498514_icons8-forward-90.png" width="24" alt="" className="button-icon" />
+                  </button>
                 </form>
               </div>
-              :
-              <div className="col-md-4 offset-md-4 col-xs-12 company-form">
-                <h1 className="text-xs-left"><b>Your Company</b></h1>
-                <ListErrors errors={this.props.errors} />
-                <form onSubmit={this.submitCompanyForm}>
-                  <fieldset>
-                    <p>Name</p>
-                    <fieldset className="form-group">
-                      <input
-                        className="form-control form-control-lg"
-                        type="text"
-                        placeholder="Name"
-                        value={this.props.companyname}
-                        onChange={this.changeCompanyName} 
-                        required />
-                    </fieldset>
-
-                    <fieldset className="form-group">
-                      <p>Set Up</p>
-                      <select className="form-control form-control-lg" value={ this.props.setup }
-                        onChange={this.changeSetup} 
-                      >
-                        <option>Customer Suport</option>
-                        <option>Experience</option>
-                        <option>Development</option>
-                      </select>
-                    </fieldset>
-
-                    <fieldset className="form-group">
-                      <p>Invite Team</p>
-                      <input
-                        className="form-control form-control-lg"
-                        type="email"
-                        placeholder="Email"
-                        value={this.props.invite}
-                        onChange={this.changeInvite} 
-                        required />
-                    </fieldset>
-
-                    <button
-                      className="btn btn-lg btn-primary form-control company-btn text-xs-center"
-                      disabled={this.props.inProgress}>
-                      <span>Next</span>
-                    </button>
-
-                  </fieldset>
-                </form>
-              </div>
-            }
-
+            </div>
           </div>
+          :
+          <div className="div-block-43-copy">
+            <div className="text-block-13">Your Info</div>
+            <ListErrors errors={this.props.errors} />
+            <div className="div-block-44">
+              <div className="w-form">
+                <form id="email-form" name="email-form" onSubmit={this.submitCompanyForm} >
+                  <input type="text" 
+                    className="textfield ful w-input" 
+                    maxLength="256" 
+                    name="company-name" 
+                    placeholder="Company Name" 
+                    id="company-name" 
+                    value={this.props.companyname}
+                    onChange={this.changeCompanyName} 
+                    required
+                    />
+                  <button
+                    className="button-2 form-button w-inline-block"
+                    type="submit"
+                    disabled={this.props.inProgress}>
+                    Log in
+                    <img src="https://uploads-ssl.webflow.com/5c5f614abad523f096147dd0/5c5f699016bb6e1e8e498514_icons8-forward-90.png" width="24" alt="" className="button-icon" />
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        }
         </div>
       </div>
     );

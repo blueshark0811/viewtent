@@ -3,9 +3,7 @@ import agent from '../agent';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { ADD_QUESTION } from '../constants/actionTypes';
-import sendImg from '../assets/images/send.png';
 import recordImg from '../assets/images/record.png';
-import favoriteBackImg from '../assets/images/favorite-back.png';
 import bufferToWav from 'audiobuffer-to-wav';
 import xhr from 'xhr';
 import Textarea from 'react-textarea-autosize';
@@ -147,12 +145,12 @@ class QuestionInput extends React.Component {
               value={this.state.body}
               onChange={this.setBody}
               onKeyUp={this.enterKeydown}
-              minRows={5}
-              maxRows={10}
+              minRows={3}
+              maxRows={5}
               rows="1">
             </Textarea>
           </div>
-          <button className="btn btn-primary btn-lg" onClick={this.createQuestion}>Send</button>
+          <button className="button-2 j w-button" onClick={this.createQuestion}>Add</button>
         </form>
       </div>
     );

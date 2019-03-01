@@ -5,18 +5,14 @@ import defaultAvatar from '../assets/images/avatar/default.jpg';
 const LoggedOutView = props => {
   if (!props.currentUser) {
     return (
-      <ul className="nav navbar-nav pull-xs-right">
-        <li className="nav-item">
-          <Link to="/login" className="nav-link">
-            Sign in
+      <nav role="navigation" className="nav-menu w-nav-menu">
+          <Link to="/register" className="nav-link blue w-nav-link">
+            Don&#x27;t have an account?
           </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/register" className="nav-link">
-            Sign up
-          </Link>
-        </li>
-      </ul>
+      </nav>
+      // <div className="menu-button w-nav-button">
+      //   <div className="w-icon-nav-menu"></div>
+      // </div>
     );
   }
   return null;
@@ -25,27 +21,25 @@ const LoggedOutView = props => {
 const LoggedInView = props => {
   if (props.currentUser) {
     return (
-      <ul className="nav navbar-nav pull-xs-right">
-
-        <li className="nav-item">
-          <Link to="/" className="nav-link">
-            Home
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/" className="nav-link">
-            Upgrade
-          </Link>
-        </li>
-
-        <li className="nav-item" style={{ padding: "0px 0px 0px 8px"}}>
-          <div className="nav-link" onClick={props.onClickLogout}>
-            <img src={defaultAvatar} className="user-pic" alt={props.currentUser.username} />
-            <a className="username">{ props.currentUser.username }</a> 
+      <nav role="navigation" className="nav-menu w-clearfix w-nav-menu">
+        <a href="index.html" className="nav-link hdfo hh w-nav-link">Home</a>
+        <a href="#" className="nav-link hdfo hh w-nav-link">Organizations</a>
+        <div data-delay="0" className="dropdown-copy w-dropdown">
+          <div className="dropdown-toggle-copy w-dropdown-toggle" onClick={props.onClickLogout}>
+            <div className="div-block-31 noc">
+              <div>{ props.currentUser.username.slice(0, 1).toUpperCase() }</div>
+            </div>
           </div>
-        </li>
-
-      </ul>
+          <nav className="dropdown-list-copy w-dropdown-list">
+            <a href="#" className="text-block-10 _0-copy w-dropdown-link">Settings</a>
+            <a href="#" className="text-block-10 _0-copy showund w-dropdown-link">Upgrade</a>
+            <a href="#" className="text-block-10 _0-copy w-dropdown-link" onClick={props.onClickLogout} >Log Out</a>
+          </nav>
+        </div>
+      </nav>
+      // <div className="menu-button w-nav-button">
+      //   <div className="w-icon-nav-menu"></div>
+      // </div>
     );
   }
 
@@ -55,18 +49,13 @@ const LoggedInView = props => {
 class Header extends React.Component {
   render() {
     return (
-      <nav className="navbar navbar-light">
-        <div className="container">
-
-          <Link to={ this.props.currentUser? '/company' : '/'} className="navbar-brand">
-            <b>{this.props.appName }</b>
-          </Link>
-
-          <LoggedOutView currentUser={this.props.currentUser} />
-
-          <LoggedInView currentUser={this.props.currentUser} onClickLogout={this.props.onClickLogout}/>
-        </div>
-      </nav>
+      <div data-collapse="medium" data-animation="default" data-duration="400" className="navbar-2 w-nav">
+        <Link to={ this.props.currentUser? '/company' : '/'} className="brand-2 w-nav-brand">
+          <h2 className="heading-3">{ this.props.appName }</h2>
+        </Link>
+        <LoggedOutView currentUser={this.props.currentUser} />
+        <LoggedInView currentUser={this.props.currentUser} onClickLogout={this.props.onClickLogout}/>
+      </div>
     );
   }
 }

@@ -10,6 +10,8 @@ import {
 } from '../constants/actionTypes';
 import { Player, ControlBar, BigPlayButton  } from 'video-react';
 import "video-react/dist/video-react.css";
+import backImg from '../assets/images/icons8-chevron-left-90_1icons8-chevron-left-90.png';
+
 
 const Promise = global.Promise;
 
@@ -49,13 +51,10 @@ class InterviewView extends React.Component {
 		return (
 	      	<div className="interview-view-page">
 		        <div className="container page">
-					<div className="page-header">
-						<div className="page-title">
-							<p style={{ marginRight: "100px"}}> Interview Title: { this.props.location.state.interview.title } </p>
-							<p> Applier : { this.props.location.state.user.username } </p>
-						</div>
-					</div>
-					<div className="page-content">
+		        	<div data-collapse="medium" data-animation="default" data-duration="400" className="navbar-2 nosha w-nav">
+			            <img src={ backImg } width="29" alt="" className="image-51" onClick={ () => { this.props.history.goBack() }}/>
+			          </div>
+					<div className="video-content">
 						<Player 
 							ref="player"
 							>

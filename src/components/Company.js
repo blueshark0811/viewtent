@@ -7,7 +7,8 @@ import {
   HOME_PAGE_UNLOADED,
   APPLY_TAG_FILTER
 } from '../constants/actionTypes';
-import dummyImg from '../assets/images/dummy.jpg';
+import dummyImg from '../assets/images/monitor.svg';
+import moreImg from '../assets/images/icons8-more-90_1icons8-more-90.png';
 
 const Promise = global.Promise;
 
@@ -49,63 +50,71 @@ class Company extends React.Component {
     return (
       <div className="company-page">
         <div className="container page">
-          <div className="page-header">
-            <div className="page-title">
-              <p>{this.props.currentUser.companyname}</p>
-            </div>
-            <div className="page-controls">
-              <div className="">
-                <select className="btn btn-lg" 
-                  >
-                    <option>All</option>
-                </select>
-                <Link to="/new-interview" className="btn btn-lg btn-primary">
-                  New Interview
-                </Link>
-                <input
-                  className="btn btn-lg search"
-                  type="text"
-                  placeholder="Search"
-                  />
+          <div className="top-menu">
+            <div className="second-menu">
+              <div className="div-block-51">
+                <div className="menuheader">All Interviews<br /></div>
+                <div className="align">
+                  <div className="button-2 white wdropdown hid">
+                    <img src="images/icons8-filter-96.png" width="17" alt="" /></div>
+                    <Link to="/new-interview" className="button-2 _24 blkd w-button">
+                      New Interview
+                    </Link>
+                  <div className="search">
+                    <div>Search</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div className="page-content">
-            <table className="table table-hover">
-              <thead>
-                <tr>
-                  <td>Name</td>
-                  <td>People</td>
-                  <td>Questions</td>
-                  <td>Points</td>
-                </tr>
-              </thead>
-              <tbody>
-              { this.props.interviews?
-                  this.props.interviews.map( interview => 
-                    <tr>
-                      <td className="name" onClick={ () => { this.props.history.push(`/interview/${interview.slug}`)}}>
-                        <div style={{ display : "flex" }}>
-                          <img  src={dummyImg} className="user-avatar"/>
+          <div className="div-block-26">
+            <div className="div-block-183">
+              <div className="w-row">
+                <div className="w-col w-col-6">
+                  <div>Name</div>
+                </div>
+                <div className="w-col w-col-3">
+                  <div>People</div>
+                </div>
+                <div className="w-col w-col-3">
+                  <div>Questions</div>
+                </div>
+              </div>
+            </div>
+            { this.props.interviews?
+                this.props.interviews.map( interview => 
+                  <div className="row">
+                    <div className="columns w-row">
+                      <div className="w-col w-col-6" onClick={ () => { this.props.history.push(`/interview/${interview.slug}`)}}>
+                        <div className="aligntext"><img src={ dummyImg } alt="" className="image-35" />
                           <div>
-                            <p>
-                              <p>{ interview.title }</p>
-                            </p>
-                            <p className="info">
-                              18hours ago
-                            </p>
+                            <div className="text-block-41">{ interview.title }</div>
+                            <div className="grey-text">18 hours ago</div>
                           </div>
                         </div>
-                      </td>
-                      <td>0</td>
-                      <td>0</td>
-                      <td>0</td>
-                    </tr>
-                  )
-                :''
-              }
-              </tbody>
-            </table>
+                      </div>
+                      <div className="w-col w-col-3">
+                        <div>0</div>
+                      </div>
+                      <div className="w-col w-col-1">
+                        <div>0</div>
+                      </div>
+                      <div className="w-clearfix w-col w-col-2">
+                        <div data-delay="0" className="dropdown w-dropdown">
+                          <div className="dropdown-toggle w-dropdown-toggle">
+                            <img src={ moreImg } width="62" alt="" className="menuimage" />
+                          </div>
+                          <nav className="dropdown-list w-dropdown-list">
+                            <a href="#" className="text-block-10 _0-copy w-dropdown-link">View</a>
+                            <a href="#" className="text-block-10 _0-copy showund w-dropdown-link">Copy link</a>
+                            <a href="#" className="text-block-10 _0-copy w-dropdown-link">Delete</a></nav>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )
+              :''
+            }
           </div>
         </div>
 

@@ -10,7 +10,10 @@ import {
   EDITOR_PAGE_UNLOADED,
   UPDATE_FIELD_EDITOR
 } from '../constants/actionTypes';
-import dummyImg from '../assets/images/dummy.jpg';
+import dummyImg from '../assets/images/monitor.svg';
+import checkCircleImg from '../assets/images/check-circle.svg';
+import backImg from '../assets/images/icons8-chevron-left-90_1icons8-chevron-left-90.png';
+
 
 
 const mapStateToProps = state => ({
@@ -95,56 +98,59 @@ class Editor extends React.Component {
     return (
       <div className="new-interview-page">
         <div className="container page">
-          <div className="row">
-            <div className="col-md-4 offset-md-4 col-xs-12 new-interview-form">
-              <h1 className="text-xs-left"><b>New Interview</b></h1>
-              <ListErrors errors={this.props.errors} />
-              <form onSubmit="">
-                <div className="choose-logo">
-                  <img  src={dummyImg} />
-                  <button
-                    className="btn btn-md btn-default choose-logo-btn">
-                    <span>Change Logo</span>
-                  </button>
-                </div>
-                <fieldset>
-                  <p>Title</p>
-                  <fieldset className="form-group">
-                    <input
-                      className="form-control form-control-lg"
-                      type="text"
-                      placeholder="Title"
-                      value={this.props.title}
-                      onChange={this.changeTitle} 
-                      required />
-                  </fieldset>
-
-                  <fieldset className="form-group">
-                    <p>Require</p>
-                    <select className="form-control form-control-lg"
-                      onChange={this.changeRequire} 
-                    >
-                      <option value="voice">Voice</option>
-                    </select>
-                  </fieldset>
-
-                  <fieldset className="form-group">
-                    <p>Allow Interview From</p>
-                    <select className="form-control form-control-lg"
-                      onChange={this.changeAllow} 
-                    >
-                      <option value="anyone with link">Anyone with link</option>
-                    </select>
-                  </fieldset>
-
-                  <button 
-                    onClick={this.submitForm}
-                    disabled={this.props.inProgress}
-                    className="form-control btn btn-lg btn-primary new-interview-btn text-xs-center">
-                    <span>Create</span>
-                  </button>
-                </fieldset>
-              </form>
+          <div data-collapse="medium" data-animation="default" data-duration="400" className="navbar-2 nosha w-nav">
+            <img src={ backImg } width="29" alt="" className="image-51" onClick={ () => { this.props.history.goBack() }}/>
+          </div>
+          <div className="div-block-43-copy">
+            <div className="text-block-13">New Interview</div>
+            <div className="div-block-44">
+              <div className="w-form">
+                <form id="email-form" name="email-form" data-name="Email Form">
+                  <div className="text-block-39">Name of Interview (Optional)</div>
+                  <ListErrors errors={this.props.errors} />
+                  <input
+                    className="textfield ful w-input"
+                    type="text"
+                    placeholder="Name"
+                    value={this.props.title}
+                    onChange={this.changeTitle} 
+                    required />
+                  <div className="text-block-39">Require</div>
+                  <div className="div-block-206">
+                    <div className="div-block-208">
+                      <div className="div-block-207"><img src={ checkCircleImg } alt="" /></div>
+                      <div>Voice</div>
+                    </div>
+                    <div className="div-block-208">
+                      <div className="div-block-207"></div>
+                      <div>Webcam</div>
+                    </div>
+                  </div>
+                  <div className="text-block-39">Allow interviews from</div>
+                  <div className="div-block-206">
+                    <div className="div-block-208">
+                      <div className="div-block-207"></div>
+                      <div>Invited Only</div>
+                    </div>
+                    <div className="div-block-208">
+                      <div className="div-block-207"><img src={ checkCircleImg } alt="" /></div>
+                      <div>Anyone with the link</div>
+                    </div>
+                  </div>
+                  <div className="button-2 white wdropdown formdropdown hide">
+                    <div>Anyone with link</div>
+                    <div className="icon im-copy w-icon-dropdown-toggle"></div>
+                  </div>
+                </form>
+              </div>
+              <button 
+                onClick={this.submitForm}
+                disabled={this.props.inProgress}
+                className="button-2 form-button w-inline-block"
+              >
+                Create
+                <img src="https://uploads-ssl.webflow.com/5c5f614abad523f096147dd0/5c5f699016bb6e1e8e498514_icons8-forward-90.png" width="24" alt="" className="button-icon" />
+              </button>
             </div>
           </div>
         </div>

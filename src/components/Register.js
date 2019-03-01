@@ -8,6 +8,8 @@ import {
   REGISTER,
   REGISTER_PAGE_UNLOADED
 } from '../constants/actionTypes';
+import linkedinImage from '../assets/images/square-linkedin-512.png';
+import googleImage from '../assets/images/new-google-favicon-512.png';
 
 const mapStateToProps = state => ({ ...state.auth });
 
@@ -50,64 +52,55 @@ class Register extends React.Component {
     return (
       <div className="auth-page">
         <div className="container page">
-          <div className="row wrapper">
-
-            <div className="col-md-4 offset-md-4 col-xs-12 auth-form">
-              <h1 className="text-xs-center">Register</h1>
-              <br />
-              <p className="text-xs-center">
-                Have an account?
-                <Link to="/login">
-                  &nbsp; <b>Sign In</b>
-                </Link>
-              </p>
-
-              <ListErrors errors={this.props.errors} />
-
-              <form onSubmit={this.submitForm(email, password)}>
-                <fieldset>
-
-                  {/* <fieldset className="form-group">
-                    <input
-                      className="form-control form-control-lg"
-                      type="text"
-                      placeholder="Username"
-                      value={this.props.username}
-                      onChange={this.changeUsername} 
-                      required />
-                  </fieldset> */}
-
-                  <fieldset className="form-group">
-                    <input
-                      className="form-control form-control-lg"
-                      type="email"
-                      placeholder="Email"
-                      value={this.props.email}
-                      onChange={this.changeEmail} 
-                      required />
-                  </fieldset>
-
-                  <fieldset className="form-group">
-                    <input
-                      className="form-control form-control-lg"
-                      type="password"
-                      placeholder="Password"
-                      value={this.props.password}
-                      onChange={this.changePassword} 
-                      required />
-                  </fieldset>
-
+          <div className="div-block-43-copy">
+            <div className="text-block-13">Register</div>
+            <ListErrors errors={this.props.errors} />
+            <div className="div-block-44">
+              <div className="div-block-129-c7opy">
+                <a href="#" className="button-2 loginbutton w-inline-block">
+                  <img src={ googleImage } width="29" sizes="29px" alt="" className="login-button-images" />
+                  <div>Login with Google</div>
+                </a>
+                <a href="#" className="button-2 loginbutton w-inline-block">
+                  <img src={ linkedinImage } width="29" alt="" className="login-button-images" />
+                  <div>Login with Linkedin</div>
+                </a>
+              </div>
+              <div className="w-form">
+                <form id="email-form" name="email-form" onSubmit={this.submitForm(email, password)}>
+                  <input type="email" 
+                    className="textfield ful w-input" 
+                    maxLength="256" 
+                    name="Email" 
+                    placeholder="Email" 
+                    id="Email-2" 
+                    value={this.props.email}
+                    onChange={this.changeEmail} 
+                    required
+                    />
+                  <input type="password" 
+                    className="textfield ful w-input" 
+                    maxLength="256" 
+                    name="Email-3"
+                    placeholder="Password" 
+                    id="Email-3"
+                    value={this.props.password}
+                    onChange={this.changePassword} 
+                    required
+                  />
                   <button
-                    className="btn btn-lg btn-primary form-control"
+                    className="button-2 form-button w-inline-block"
                     type="submit"
                     disabled={this.props.inProgress}>
-                    Sign up
+                    Register
+                    <img src="https://uploads-ssl.webflow.com/5c5f614abad523f096147dd0/5c5f699016bb6e1e8e498514_icons8-forward-90.png" width="24" alt="" className="button-icon" />
                   </button>
-
-                </fieldset>
-              </form>
+                  <Link to="/login" className="text-block-36 lrg vgd-copy w-inline-block" style={{ width: "100%", textAlign: "center"}}>
+                    <strong className="bold-text-5">Have an account already</strong>
+                  </Link>
+                </form>
+              </div>
             </div>
-
           </div>
         </div>
       </div>

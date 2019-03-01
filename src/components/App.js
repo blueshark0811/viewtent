@@ -18,9 +18,11 @@ import Register from '../components/Register';
 import Settings from '../components/Settings';
 import { store } from '../store';
 import { push } from 'react-router-redux';
-import '../assets/css/style.css';
-import '../assets/css/custom.css';
-
+// import '../assets/css/style.css';
+// import '../assets/css/custom.css';
+import '../assets/css/normalize.css';
+import '../assets/css/webflow.css';
+import '../assets/css/finco12.webflow.css';
 
 const mapStateToProps = state => {
   return {
