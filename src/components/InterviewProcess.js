@@ -16,6 +16,7 @@ import mousePointerImg from '../assets/images/icons8-mouse-pointer-100.png';
 import mousePointerImig2 from "../assets/images/icons8-mouse-pointer-90_1icons8-mouse-pointer-90.png";
 import noVideoImg from '../assets/images/icons8-no-video-90_1icons8-no-video-90.png';
 import pauseImg from '../assets/images/icons8-pause-filled-100.png';
+import resumeImg from '../assets/images/icons8-play-96.png';
 
 
 const Promise = global.Promise;
@@ -41,7 +42,10 @@ class InterviewProcess extends React.Component {
 			rejectedReason: '',
 			recording: false,
 			paused: false,
-			questionIndex : 0
+			questionIndex : 0,
+			fullname: '',
+			email : '',
+			msg : ''
 		};
 
 		this.handleRequest = this.handleRequest.bind(this);
@@ -69,12 +73,19 @@ class InterviewProcess extends React.Component {
 		console.log('Permission Denied!', err);
 	}
 	handleStart(stream) {
-		this.setState({
-			recording: true
-		});
-
-		this.setStreamToVideo(stream);
-		console.log('Recording Started.');
+		// debugger;
+		// if (this.state.fullname != '' && this.state.email != '')
+		// {
+			this.setState({
+				recording: true,
+				msg : ''
+			});
+			this.setStreamToVideo(stream);
+			console.log('Recording Started.');
+		// }
+		// else {
+		// 	this.setState({ msg : "Please enter your email and name "})
+		// }
 	}
 	handleStop(blob) {
 		this.setState({
@@ -130,12 +141,13 @@ class InterviewProcess extends React.Component {
 		var fd = new FormData();
         fd.append('fname', 'recording.webm');
         fd.append('data', blob);
-        console.log('~~~~~~~~~~~~~', fd);
         agent.Interviews.upload(fd).then(function(response){
         	// response.data.title;
-    		var payload = agent.Interviews.createApplier(_self.props.interviewSlug,
+    		var payload = agent.Interviews.createApplier(_self.props.interview.slug,
                 { 
-                  	video : response.data.title
+                  	video : response.data.title,
+                  	fullname : _self.state.fullname,
+                  	email : _self.state.email
                 }
           );
           _self.props.onSubmit(payload);
@@ -148,10 +160,11 @@ class InterviewProcess extends React.Component {
         fd.append('fname', 'recording.webm');
         fd.append('data', '');
         agent.Interviews.upload(fd).then(function(response){
-        	// response.data.title;
-    		var payload = agent.Interviews.createApplier(_self.props.interviewSlug,
+    		var payload = agent.Interviews.createApplier(_self.props.interview.slug,
                 { 
-                  	video : response.data.title
+                  	video : response.data.title,
+                  	fullname : _self.state.fullname,
+                  	email : _self.state.email
                 }
           );
           _self.props.onSubmit(payload);
@@ -173,7 +186,7 @@ class InterviewProcess extends React.Component {
 							<div className="div-block-51 sbs"><img src={ monitorImg } width="25" alt="" className="image-35-copy-2" />
 							  	<div className="div-block-6">
 								    <div>
-								      <div className="text-block-14">Interview: Senior Full Stack Developer <br /></div>
+								      <div className="text-block-14">Interview: { this.props.interview.title } <br /></div>
 								      <div className="text-block-36 lrg vgd-copy-copy">This interview requires Webcam, Voice and Screenshare.</div>
 								    </div>
 						    	</div>
@@ -232,9 +245,31 @@ class InterviewProcess extends React.Component {
 									      	</a>
 								        </div>
 								      	<div className="w-form">
+								            { this.state.msg != '' ? 
+								            	<div className="text-block-36 lrg vgd-copy">{ this.state.msg }</div>
+								            	:''
+								        	}
 									        <form id="email-form" name="email-form" data-name="Email Form">
-									        	<input type="email" className="textfield ful w-input" maxlength="256" name="Email" data-name="Email" placeholder="Email" id="Email-2" />
-									        	<input type="text" className="textfield ful w-input" maxlength="256" name="Email-3" data-name="Email 3" placeholder="Name" id="Email-3" />
+									        	<input type="email" 
+									        		className="textfield ful w-input" 
+									        		maxlength="256" 
+									        		name="Email" 
+									        		placeholder="Email" 
+									        		id="Email-2"
+									        		value={ this.state.email }
+									        		onChange={ (e) => this.setState({ email : e.target.value}) }
+									        		required
+								        		/>
+									        	<input type="text" 
+									        		className="textfield ful w-input" 
+									        		maxlength="256" 
+									        		name="Email-3" 
+									        		placeholder="Name" 
+									        		id="Email-3" 
+									        		value={ this.state.fullname }
+									        		onChange={ (e) => this.setState({ fullname : e.target.value}) }
+									        		required 
+								        		/>
 								          		<div className="text-block-36 lrg vgd-copy">This is an automated video interview. You can delete your submitted interview at any time.</div>
 									        </form>
 								      	</div>
@@ -266,16 +301,18 @@ class InterviewProcess extends React.Component {
 											        <div className="minimenu">
 											          <div className="div-block-186">
 											            <div className="minibutton">
-											            	<img src={ pauseImg } width="25" alt="" className="image-40" />
-											              <div className="text-block-49">Pause</div>
+											            	<img src={ this.state.paused? resumeImg : pauseImg } width="25" alt="" className="image-40" />
+											            	{this.state.paused?
+											              		<div className="text-block-49" onClick={resume}>Resume</div>
+											              		:
+											              		<div className="text-block-49" onClick={pause}>Pause</div>
+											            	}
 											            </div>
 											          </div>
 											          <div onClick={stop}>End Interview</div>
 											        </div>
 											     </div>
 											}
-											{/* <button onClick={pause}>Pause</button>
-											<button onClick={resume}>Resume</button> */}
 											<video autoPlay></video>
 										</div>
 									} />

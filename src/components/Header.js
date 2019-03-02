@@ -47,6 +47,7 @@ const LoggedInView = props => {
 };
 
 class Header extends React.Component {
+
   render() {
     return (
       <div data-collapse="medium" data-animation="default" data-duration="400" className="navbar-2 w-nav">

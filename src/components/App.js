@@ -62,21 +62,24 @@ class App extends React.Component {
     if (this.props.appLoaded) {
       return (
         <div>
-          <Header
-            appName={this.props.appName}
-            currentUser={this.props.currentUser}
-            onClickLogout={this.props.onClickLogout} />
-            <Switch>
-            <Route exact path="/" component={Dashboard}/>
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
-            <Route path="/company" component={Company} />
-            <Route path="/thankyou" component={Thankyou} />
-            <Route path="/interview/:id" component={Interview} />
-            <Route path="/new-interview" component={NewInterview} />
-            <Route path="/review/:applier" component={InterviewView} />
-          */}
-            </Switch>
+          { this.props.location.pathname.indexOf('/interview') > -1 && !this.props.currentUser?
+            ''
+            :
+            <Header
+              appName={this.props.appName}
+              currentUser={this.props.currentUser}
+              onClickLogout={this.props.onClickLogout} />
+          }
+          <Switch>
+          <Route exact path="/" component={Dashboard}/>
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+          <Route path="/company" component={Company} />
+          <Route path="/thankyou" component={Thankyou} />
+          <Route path="/interview/:id" component={Interview} />
+          <Route path="/new-interview" component={NewInterview} />
+          <Route path="/review/:applier" component={InterviewView} />
+          </Switch>
         </div>
       );
     }

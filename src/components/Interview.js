@@ -48,14 +48,14 @@ class Interview extends React.Component {
   }
 
   componentDidMount() {
-    if(!this.props.currentUser) {
-      this.props.history.push({
-          pathname: '/login', 
-          state : { 
-            redirectTo : this.props.location.pathname
-          }
-      })
-    }
+    // if(!this.props.currentUser) {
+    //   this.props.history.push({
+    //       pathname: '/login', 
+    //       state : { 
+    //         redirectTo : this.props.location.pathname
+    //       }
+    //   })
+    // }
   }
 
 
@@ -112,7 +112,7 @@ class Interview extends React.Component {
                   <div className="div-block-6">
                     <img src={ dummyImg } width="42" alt="" className="image-35-copy" />
                     <div className="text-block-14">{ this.props.interview.title }<br /></div>
-                    <a href="start.html" className="linkblock w-inline-block">
+                    <a href="#" className="linkblock w-inline-block">
                       <img src={ linkImg } width="62" alt="" className="linkimage" />
                     </a>
                   </div>
@@ -173,7 +173,7 @@ class Interview extends React.Component {
                             <div className="aligntext">
                               <div className="div-block-31-copy"><img src={ dummyImg } alt="" /></div>
                               <div>
-                                <div className="text-block-41">{ applier.author.username }</div>
+                                <div className="text-block-41">{ applier.author.fullname }</div>
                                 <div className="grey-text">{ applier.author.email }</div>
                               </div>
                             </div>
@@ -232,12 +232,14 @@ class Interview extends React.Component {
                         <div className="columns w-row">
                           <div className="w-col w-col-11">
                             <div className="aligntext">
-                              <div className="div-block-185">
-                                <div className="fry">
-                                  <AudioPlayerOne audio={ question.audio }/>
-                                  { question.body }
+                              <div className="div-block-185" style={{ display : "flex"}}>
+                                <AudioPlayerOne audio={ question.audio }/>
+                                <div>
+                                  <div className="fry">
+                                    { question.body }
+                                  </div>
+                                  <div className="grey-text">{ index + 1 }</div>
                                 </div>
-                                <div className="grey-text">{ index + 1 }</div>
                               </div>
                             </div>
                           </div>
@@ -336,7 +338,7 @@ class Interview extends React.Component {
     }
     else {
       return (
-        <InterviewProcess questionList = {this.props.questions} interviewSlug = {this.props.interview.slug}/>
+        <InterviewProcess questionList = {this.props.questions} interview = {this.props.interview}/>
       )
     }
   }

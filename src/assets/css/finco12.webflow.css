@@ -15,23 +15,36 @@ body {
 }
 
 .simple-player i{
-    padding: 17px 20px;
+    padding: 14px 16px;
     margin-right: 20px;
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
     border-radius: 25px;
-    font-size: 18px;
+    font-size: 14px;
     color: #fff;
-    background-color: #74b9ff;
+    background-color: #74b9ff;  
 }
 
 .simple-player .fa-pause {
-    padding: 17px 17px;
+    padding: 14px;
 }
 
 .page-content {
   text-align: center;
   padding: 50px;
+}
+
+.interview-process-page video {
+  display: none;
+}
+
+.interview-process-page .simple-player {
+  display: none;
+}
+
+.question-form {
+  text-align: right;
+  margin: 20px 0px;
 }
 
 a {

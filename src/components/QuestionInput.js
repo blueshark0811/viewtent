@@ -138,9 +138,16 @@ class QuestionInput extends React.Component {
   render() {
     return (
       <div className="question-input">
-        <form className="question-form  form-group" onSubmit={this.createQuestion} style={{ margin : "0px"}}>
+        <form className="question-form" onSubmit={this.createQuestion}>
           <div className="question-text">
-            <Textarea className="form-control question-input"
+            <input type="text" 
+              className="textfield ful w-input" 
+              placeholder="Add a question..."
+              value={this.state.body}
+              onChange={this.setBody}
+              onKeyUp={this.enterKeydown}
+              />
+            {/* <Textarea className="textfield ful w-input"
               placeholder="Add a question..."
               value={this.state.body}
               onChange={this.setBody}
@@ -148,7 +155,7 @@ class QuestionInput extends React.Component {
               minRows={3}
               maxRows={5}
               rows="1">
-            </Textarea>
+            </Textarea> */}
           </div>
           <button className="button-2 j w-button" onClick={this.createQuestion}>Add</button>
         </form>
