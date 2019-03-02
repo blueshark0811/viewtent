@@ -56,7 +56,7 @@ export default (state = defaultState, action) => {
     case REGISTER:
       return {
         ...state,
-        redirectTo: action.error ? null : state.goTo? state.goTo : action.payload.user.companyname == '' || !action.payload.user.companyname ? '/login' : '/company' ,
+        redirectTo: action.error ? null : state.goTo? state.goTo : action.payload.user.companyname == '' || !action.payload.user.companyname ? '/login' : '/dashboard' ,
         token: action.error ? null : action.payload.user.token,
         currentUser: action.error ? null : action.payload.user
       };
