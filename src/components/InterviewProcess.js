@@ -72,8 +72,8 @@ class InterviewProcess extends React.Component {
 		this.setState({ rejectedReason: err.name });
 		console.log('Permission Denied!', err);
 	}
+
 	handleStart(stream) {
-		// debugger;
 		// if (this.state.fullname != '' && this.state.email != '')
 		// {
 			this.setState({
@@ -84,7 +84,7 @@ class InterviewProcess extends React.Component {
 			console.log('Recording Started.');
 		// }
 		// else {
-		// 	this.setState({ msg : "Please enter your email and name "})
+		// 	this.setState({ msg : "Please enter your email and name "});
 		// }
 	}
 	handleStop(blob) {
@@ -141,6 +141,7 @@ class InterviewProcess extends React.Component {
 		var fd = new FormData();
         fd.append('fname', 'recording.webm');
         fd.append('data', blob);
+        this.setState({ processing : true });
         agent.Interviews.upload(fd).then(function(response){
         	// response.data.title;
     		var payload = agent.Interviews.createApplier(_self.props.interview.slug,
@@ -177,57 +178,72 @@ class InterviewProcess extends React.Component {
 		const recording = this.state.recording;
 		const paused = this.state.paused;
 		const questionList = this.props.questions;
-		
+		const allow = (this.props.interview.allow == 'invited' && 
+						this.props.interview.invitations.indexOf(this.state.email) > -1) 
+						|| this.props.interview.allow == 'anyone'
 		return (
 	      	<div className="interview-process-page">
-	      		{ rejectedReason == ''?
-			        <div className="container page">
-			        	<div data-collapse="medium" data-animation="default" data-duration="400" className="navbar-2 nosha w-nav">
-							<div className="div-block-51 sbs"><img src={ monitorImg } width="25" alt="" className="image-35-copy-2" />
-							  	<div className="div-block-6">
-								    <div>
-								      <div className="text-block-14">Interview: { this.props.interview.title } <br /></div>
-								      <div className="text-block-36 lrg vgd-copy-copy">This interview requires Webcam, Voice and Screenshare.</div>
-								    </div>
-						    	</div>
-							</div><a href="#" className="brand-2-copy w-nav-brand"></a>
-							<div className="menu-button w-nav-button">
-							  <div className="w-icon-nav-menu"></div>
-							</div>
+		        <div className="container page">
+		        	<div data-collapse="medium" data-animation="default" data-duration="400" className="navbar-2 nosha w-nav">
+						<div className="div-block-51 sbs">
+							<img src={ monitorImg } width="25" alt="" className="image-35-copy-2" />
+						  	<div className="div-block-6">
+							    <div>
+							      <div className="text-block-14">Interview: { this.props.interview.title } <br /></div>
+							      <div className="text-block-36 lrg vgd-copy-copy">This interview requires Webcam, Voice and Screenshare.</div>
+							    </div>
+					    	</div>
+						</div><a href="#" className="brand-2-copy w-nav-brand"></a>
+						<div className="menu-button w-nav-button">
+						  <div className="w-icon-nav-menu"></div>
 						</div>
+					</div>
+					{ 
+						this.state.processing?
+						''
+						:
+						rejectedReason == ''?
 						<div className="div-block-43-copy">
 							<div className="div-block-44">
-								{ this.state.recording? 
-							    	questionList && questionList.length > 0?
-									    <div>
-									      <div className="text-block-43">Please answer all questions &nbsp; { this.state.questionIndex+1 } /  { questionList.length } </div>
-									      <div style={{ display : "flex"}}>
-										      <AudioPlayerOne audio={ questionList[this.state.questionIndex].audio } autoPlay/>
-										      <div className="text-block-44">{ this.state.questionIndex + 1}. { questionList[this.state.questionIndex].body }</div>
-									      </div>
-									      <div className="div-block-129-copy-copy">
-									        <div className="circle-buttons active">
-									        	<img src="https://uploads-ssl.webflow.com/5c5f614abad523f096147dd0/5c5f614abad5230d9b147e77_icons8-microphone-96.png" alt="" className="image-33"/>
-								        	</div>
-									        <div className="circle-buttons">
-									        	<img src={ noVideoImg } alt="" className="image-33" />
-								        	</div>
-									        <div className="circle-buttons active">
-									        	<img src={ mousePointerImig2 } alt="" className="image-33" />
-								        	</div>
-									      </div>
-									      <div className="div-block-191">
-									        { this.state.questionIndex <  questionList.length-1?
-												<button className="button-2 form-button white w-inline-block" onClick={ () => { this.setState({ questionIndex : this.state.questionIndex + 1 })}}> 
-													Next Question 
-													<img src="https://uploads-ssl.webflow.com/5c5f614abad523f096147dd0/5c5f699016bb6e1e8e498514_icons8-forward-90.png" width="24" alt="" className="button-icon" />
-												</button>
-												:
-												''
-											}
-											</div>
+								{ this.state.recording?
+									allow?
+								    	questionList && questionList.length > 0?
+										    <div>
+										      <div className="text-block-43">Please answer all questions &nbsp; { this.state.questionIndex+1 } /  { questionList.length } </div>
+										      <div style={{ display : "flex"}}>
+											      <AudioPlayerOne audio={ questionList[this.state.questionIndex].audio } autoPlay/>
+											      <div className="text-block-44">{ this.state.questionIndex + 1}. { questionList[this.state.questionIndex].body }</div>
+										      </div>
+										      <div className="div-block-129-copy-copy">
+										        <div className="circle-buttons active">
+										        	<img src="https://uploads-ssl.webflow.com/5c5f614abad523f096147dd0/5c5f614abad5230d9b147e77_icons8-microphone-96.png" alt="" className="image-33"/>
+									        	</div>
+										        <div className="circle-buttons">
+										        	<img src={ noVideoImg } alt="" className="image-33" />
+									        	</div>
+										        <div className="circle-buttons active">
+										        	<img src={ mousePointerImig2 } alt="" className="image-33" />
+									        	</div>
+										      </div>
+										      <div className="div-block-191">
+										        { this.state.questionIndex <  questionList.length-1?
+													<button className="button-2 form-button white w-inline-block" onClick={ () => { this.setState({ questionIndex : this.state.questionIndex + 1 })}}> 
+														Next Question 
+														<img src="https://uploads-ssl.webflow.com/5c5f614abad523f096147dd0/5c5f699016bb6e1e8e498514_icons8-forward-90.png" width="24" alt="" className="button-icon" />
+													</button>
+													:
+													''
+												}
+												</div>
+										    </div>
+									    	:
+									    	<div className="text-block-14" style={{ textAlign : "center"}}>
+									    		No questions
+									    	</div>
+							    	    :
+									    <div className="text-block-14" style={{ textAlign : "center"}}>
+									    	Available only for invited people
 									    </div>
-								    	:''
 								    :
 								    <div>
 										<div className="text-block-46">Please turn on before starting:</div>
@@ -297,21 +313,23 @@ class InterviewProcess extends React.Component {
 														<img src="https://uploads-ssl.webflow.com/5c5f614abad523f096147dd0/5c5f699016bb6e1e8e498514_icons8-forward-90.png" width="24" alt="" className="button-icon" />
 													</button>
 												:
-												<div className="div-block-83-copy" style={{ color : "#fff"}}>
-											        <div className="minimenu">
-											          <div className="div-block-186">
-											            <div className="minibutton">
-											            	<img src={ this.state.paused? resumeImg : pauseImg } width="25" alt="" className="image-40" />
-											            	{this.state.paused?
-											              		<div className="text-block-49" onClick={resume}>Resume</div>
-											              		:
-											              		<div className="text-block-49" onClick={pause}>Pause</div>
-											            	}
-											            </div>
-											          </div>
-											          <div onClick={stop}>End Interview</div>
-											        </div>
-											     </div>
+												allow?
+													<div className="div-block-83-copy" style={{ color : "#fff"}}>
+												        <div className="minimenu">
+												          <div className="div-block-186">
+												            <div className="minibutton">
+												            	<img src={ this.state.paused? resumeImg : pauseImg } width="25" alt="" className="image-40" />
+												            	{this.state.paused?
+												              		<div className="text-block-49" onClick={resume}>Resume</div>
+												              		:
+												              		<div className="text-block-49" onClick={pause}>Pause</div>
+												            	}
+												            </div>
+												          </div>
+												          <div onClick={stop}>End Interview</div>
+												        </div>
+												    </div>
+											    	:''
 											}
 											<video autoPlay></video>
 										</div>
@@ -319,16 +337,12 @@ class InterviewProcess extends React.Component {
 							    </div>
 						    </div>
 					    </div>
-					</div>
-					:
-					<div className="container page">
-						<div className="page-header">
-							<div className="page-title">
-								<p>Please check you have a mic and camera enabled</p>
-							</div>
-						</div>
-					</div>
-	      		}
+					    :
+					    <div className="page-content">
+				            <h2 className="text-block-14">Please check you have a mic and camera enabled</h2>
+			          	</div>
+					}
+				</div>
 			</div>
 		);
 	}

@@ -38,12 +38,12 @@ const mapDispatchToProps = dispatch => ({
 class Editor extends React.Component {
   constructor() {
     super();
-
-    const updateFieldEvent =
-      key => ev => this.props.onUpdateField(key, ev.target.value);
-    this.changeTitle = updateFieldEvent('title');
-    this.changeRequire = updateFieldEvent('require');
-    this.changeAllow = updateFieldEvent('allow');
+    
+    this.state = {
+      title : '',
+      require : 'voice',
+      allow : 'invited'
+    }
 
     this.watchForEnter = ev => {
       if (ev.keyCode === 13) {
@@ -59,9 +59,9 @@ class Editor extends React.Component {
     this.submitForm = ev => {
       ev.preventDefault();
       const interview = {
-        title: this.props.title,
-        require: this.props.require,
-        allow: this.props.allow
+        title: this.state.title,
+        require: this.state.require,
+        allow: this.state.allow
       };
 
       const slug = { slug: this.props.interviewSlug };
@@ -112,28 +112,36 @@ class Editor extends React.Component {
                     className="textfield ful w-input"
                     type="text"
                     placeholder="Name"
-                    value={this.props.title}
-                    onChange={this.changeTitle} 
+                    value={this.state.title}
+                    onChange={ (e) => {this.setState({ title : e.target.value})} } 
                     required />
                   <div className="text-block-39">Require</div>
                   <div className="div-block-206">
-                    <div className="div-block-208">
-                      <div className="div-block-207"><img src={ checkCircleImg } alt="" /></div>
+                    <div className="div-block-208" onClick={ () => this.setState({ require : 'voice' }) }>
+                      <div className="div-block-207">
+                        { this.state.require == 'voice'? <img src={ checkCircleImg } alt="" />:'' }
+                      </div>
                       <div>Voice</div>
                     </div>
-                    <div className="div-block-208">
-                      <div className="div-block-207"></div>
+                    <div className="div-block-208" onClick={ () => this.setState({ require : 'webcam' })}>
+                      <div className="div-block-207">
+                        { this.state.require == 'webcam'? <img src={ checkCircleImg } alt="" />:'' }
+                      </div>
                       <div>Webcam</div>
                     </div>
                   </div>
                   <div className="text-block-39">Allow interviews from</div>
                   <div className="div-block-206">
-                    <div className="div-block-208">
-                      <div className="div-block-207"></div>
+                    <div className="div-block-208" onClick={ () => this.setState({ allow : 'invited' })}>
+                      <div className="div-block-207">
+                        { this.state.allow == 'invited'? <img src={ checkCircleImg } alt="" />:'' }
+                      </div>
                       <div>Invited Only</div>
                     </div>
-                    <div className="div-block-208">
-                      <div className="div-block-207"><img src={ checkCircleImg } alt="" /></div>
+                    <div className="div-block-208" onClick={ () => this.setState({ allow : 'anyone' })}>
+                      <div className="div-block-207">
+                        { this.state.allow == 'anyone'? <img src={ checkCircleImg } alt="" />:'' }
+                      </div>
                       <div>Anyone with the link</div>
                     </div>
                   </div>
@@ -141,16 +149,16 @@ class Editor extends React.Component {
                     <div>Anyone with link</div>
                     <div className="icon im-copy w-icon-dropdown-toggle"></div>
                   </div>
+                  <button 
+                    onClick={this.submitForm}
+                    disabled={this.props.inProgress}
+                    className="button-2 form-button w-inline-block"
+                  >
+                    Create
+                    <img src="https://uploads-ssl.webflow.com/5c5f614abad523f096147dd0/5c5f699016bb6e1e8e498514_icons8-forward-90.png" width="24" alt="" className="button-icon" />
+                  </button>
                 </form>
               </div>
-              <button 
-                onClick={this.submitForm}
-                disabled={this.props.inProgress}
-                className="button-2 form-button w-inline-block"
-              >
-                Create
-                <img src="https://uploads-ssl.webflow.com/5c5f614abad523f096147dd0/5c5f699016bb6e1e8e498514_icons8-forward-90.png" width="24" alt="" className="button-icon" />
-              </button>
             </div>
           </div>
         </div>

@@ -11,7 +11,10 @@ import {
 import linkedinImage from '../assets/images/square-linkedin-512.png';
 import googleImage from '../assets/images/new-google-favicon-512.png';
 
-const mapStateToProps = state => ({ ...state.auth });
+const mapStateToProps = state => ({ 
+  ...state.auth ,
+  currentUser: state.common.currentUser
+});
 
 const mapDispatchToProps = dispatch => ({
   onChangeEmail: value =>
@@ -37,6 +40,12 @@ class Register extends React.Component {
     this.submitForm = (email, password) => ev => {
       ev.preventDefault();
       this.props.onSubmit(email, password);
+    }
+  }
+
+  componentDidMount() {
+    if(this.props.currentUser) {
+      this.props.history.push('/');
     }
   }
 

@@ -44,8 +44,6 @@ export default (state = {}, action) => {
         ...state,
         tagList: state.tagList.filter(tag => tag !== action.tag)
       };
-    case UPDATE_FIELD_EDITOR:
-      return { ...state, [action.key]: action.value };
     default:
       return state;
   }

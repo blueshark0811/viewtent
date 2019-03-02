@@ -47,7 +47,7 @@ class Thankyou extends React.Component {
       <div className="thankyou-page">
         <div className="container page">
           <div className="page-content">
-            <h2 className="text-xs-center">Thank you for your apply. <br /> <br />We will review your application and contact you later.</h2>
+            <div className="text-block-14">Thank you for your apply. <br /> <br />We will review your application and contact you later.</div>
           </div>
         </div>
       </div>

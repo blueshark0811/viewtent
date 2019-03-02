@@ -16,6 +16,7 @@ import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props
 
 const mapStateToProps = state => ({ 
   ...state.auth,
+  currentUser: state.common.currentUser
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -93,6 +94,9 @@ class Login extends React.Component {
   }
 
   componentDidMount() {
+    if(this.props.currentUser) {
+      this.props.history.push('/');
+    }
     this.props.onChangeEmail(this.props.email);
     this.props.onChangePassword(this.props.password);
     if (this.props.location.state) {

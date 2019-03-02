@@ -77,7 +77,11 @@ const Interviews = {
   createApplier : (slug, applier)  => 
     requests.post(`/interviews/${slug}/appliers`, { applier }),
   appliersForInterview: slug =>
-    requests.get(`/interviews/${slug}/appliers`)
+    requests.get(`/interviews/${slug}/appliers`),
+  inviteAdd : (slug, email) => 
+    requests.post(`/interviews/${slug}/invite`, { email : email }),
+  inviteRemove : (slug, email) => 
+    requests.del(`/interviews/${slug}/invite/${email}`)
 };
 
 const Questions = {

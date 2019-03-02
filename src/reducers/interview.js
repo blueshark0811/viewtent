@@ -2,7 +2,8 @@ import {
   INTERVIEW_PAGE_LOADED,
   INTERVIEW_PAGE_UNLOADED,
   ADD_QUESTION,
-  DELETE_QUESTION
+  DELETE_QUESTION,
+  UPDATE_FIELD_EDITOR
 } from '../constants/actionTypes';
 
 export default (state = {}, action) => {
@@ -10,7 +11,7 @@ export default (state = {}, action) => {
     case INTERVIEW_PAGE_LOADED:
       return {
         ...state,
-        interview: action.payload[0].interview,
+        ...action.payload[0].interview,
         questions: action.payload[1].questions,
         appliers : action.payload[2].appliers
       };
@@ -29,6 +30,10 @@ export default (state = {}, action) => {
       return {
         ...state,
         questions: state.questions.filter(question => question.id !== questionId)
+      };
+    case UPDATE_FIELD_EDITOR:
+      return { ...state, 
+        [action.key]: action.value 
       };
     default:
       return state;

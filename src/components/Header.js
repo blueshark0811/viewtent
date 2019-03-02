@@ -51,7 +51,7 @@ class Header extends React.Component {
   render() {
     return (
       <div data-collapse="medium" data-animation="default" data-duration="400" className="navbar-2 w-nav">
-        <Link to={ this.props.currentUser? '/company' : '/'} className="brand-2 w-nav-brand">
+        <Link to={ this.props.currentUser? '/dashboard' : '/'} className="brand-2 w-nav-brand">
           <h2 className="heading-3">{ this.props.appName }</h2>
         </Link>
         <LoggedOutView currentUser={this.props.currentUser} />
