@@ -27,6 +27,7 @@ class Invite extends React.Component {
     
     this.state = {
       title : '',
+      email : '',
       require : 'voice',
       allow : 'invited'
     }
@@ -110,7 +111,7 @@ class Invite extends React.Component {
               </div>
               { 
                 this.props.invitations.map( (invitation, index) => 
-                  <div className="row" key="invite{index}">
+                  <div className="row" key={index}>
                     <div className="columns w-row">
                       <div className="w-col w-col-10">
                         <div className="aligntext">
