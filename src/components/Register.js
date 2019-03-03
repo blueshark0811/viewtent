@@ -60,55 +60,53 @@ class Register extends React.Component {
 
     return (
       <div className="auth-page">
-        <div className="container page">
-          <div className="div-block-43-copy">
-            <div className="text-block-13">Register</div>
-            <ListErrors errors={this.props.errors} />
-            <div className="div-block-44">
-              <div className="div-block-129-c7opy">
-                <a href="#" className="button-2 loginbutton w-inline-block">
-                  <img src={ googleImage } width="29" sizes="29px" alt="" className="login-button-images" />
-                  <div>Login with Google</div>
-                </a>
-                <a href="#" className="button-2 loginbutton w-inline-block">
-                  <img src={ linkedinImage } width="29" alt="" className="login-button-images" />
-                  <div>Login with Linkedin</div>
-                </a>
-              </div>
-              <div className="w-form">
-                <form id="email-form" name="email-form" onSubmit={this.submitForm(email, password)}>
-                  <input type="email" 
-                    className="textfield ful w-input" 
-                    maxLength="256" 
-                    name="Email" 
-                    placeholder="Email" 
-                    id="Email-2" 
-                    value={this.props.email}
-                    onChange={this.changeEmail} 
-                    required
-                    />
-                  <input type="password" 
-                    className="textfield ful w-input" 
-                    maxLength="256" 
-                    name="Email-3"
-                    placeholder="Password" 
-                    id="Email-3"
-                    value={this.props.password}
-                    onChange={this.changePassword} 
-                    required
+        <div className="div-block-43-copy">
+          <div className="text-block-13">Register</div>
+          <ListErrors errors={this.props.errors} />
+          <div className="div-block-44">
+            <div className="div-block-129-c7opy">
+              <a href="#" className="button-2 loginbutton w-inline-block">
+                <img src={ googleImage } width="29" sizes="29px" alt="" className="login-button-images" />
+                <div>Login with Google</div>
+              </a>
+              <a href="#" className="button-2 loginbutton w-inline-block">
+                <img src={ linkedinImage } width="29" alt="" className="login-button-images" />
+                <div>Login with Linkedin</div>
+              </a>
+            </div>
+            <div className="w-form">
+              <form id="email-form" name="email-form" onSubmit={this.submitForm(email, password)}>
+                <input type="email" 
+                  className="textfield ful w-input" 
+                  maxLength="256" 
+                  name="Email" 
+                  placeholder="Email" 
+                  id="Email-2" 
+                  value={this.props.email}
+                  onChange={this.changeEmail} 
+                  required
                   />
-                  <button
-                    className="button-2 form-button w-inline-block"
-                    type="submit"
-                    disabled={this.props.inProgress}>
-                    Register
-                    <img src="https://uploads-ssl.webflow.com/5c5f614abad523f096147dd0/5c5f699016bb6e1e8e498514_icons8-forward-90.png" width="24" alt="" className="button-icon" />
-                  </button>
-                  <Link to="/login" className="text-block-36 lrg vgd-copy w-inline-block" style={{ width: "100%", textAlign: "center"}}>
-                    <strong className="bold-text-5">Have an account already</strong>
-                  </Link>
-                </form>
-              </div>
+                <input type="password" 
+                  className="textfield ful w-input" 
+                  maxLength="256" 
+                  name="Email-3"
+                  placeholder="Password" 
+                  id="Email-3"
+                  value={this.props.password}
+                  onChange={this.changePassword} 
+                  required
+                />
+                <button
+                  className="button-2 form-button w-inline-block"
+                  type="submit"
+                  disabled={this.props.inProgress}>
+                  Register
+                  <img src="https://uploads-ssl.webflow.com/5c5f614abad523f096147dd0/5c5f699016bb6e1e8e498514_icons8-forward-90.png" width="24" alt="" className="button-icon" />
+                </button>
+                <Link to="/login" className="text-block-36 lrg vgd-copy w-inline-block" style={{ width: "100%", textAlign: "center"}}>
+                  <strong className="bold-text-5">Have an account already</strong>
+                </Link>
+              </form>
             </div>
           </div>
         </div>

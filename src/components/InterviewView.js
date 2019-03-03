@@ -50,23 +50,21 @@ class InterviewView extends React.Component {
 
 		return (
 	      	<div className="interview-view-page">
-		        <div className="container page">
-		        	<div data-collapse="medium" data-animation="default" data-duration="400" className="navbar-2 nosha w-nav">
-			            <img src={ backImg } width="29" alt="" className="image-51" onClick={ () => { this.props.history.goBack() }}/>
-			          </div>
-					<div className="video-content">
-						<Player 
-							ref="player"
-							>
-						  <source src={ this.props.location.state.video}
-							fluid="false"
-							width="500"
-							height ="200"
-							/>
-						  <BigPlayButton position="center" />
-				          <ControlBar autoHide={false} />
-						</Player>
-					</div>
+	        	<div data-collapse="medium" data-animation="default" data-duration="400" className="navbar-2 nosha w-nav">
+		            <img src={ backImg } width="29" alt="" className="image-51" onClick={ () => { this.props.history.goBack() }}/>
+		          </div>
+				<div className="video-content">
+					<Player 
+						ref="player"
+						>
+					  <source src={ this.props.location.state.video}
+						fluid="false"
+						width="500"
+						height ="200"
+						/>
+					  <BigPlayButton position="center" />
+			          <ControlBar autoHide={false} />
+					</Player>
 				</div>
 			</div>
 		);

@@ -3,7 +3,8 @@ import {
   INTERVIEW_PAGE_UNLOADED,
   ADD_QUESTION,
   DELETE_QUESTION,
-  UPDATE_FIELD_EDITOR
+  UPDATE_FIELD_EDITOR,
+  APPLIER_PAGE_LOADED
 } from '../constants/actionTypes';
 
 export default (state = {}, action) => {
@@ -35,6 +36,12 @@ export default (state = {}, action) => {
       return { ...state, 
         [action.key]: action.value 
       };
+    case APPLIER_PAGE_LOADED : 
+      return {
+        ...state,
+        ...action.payload[0].interview,
+        appliers : action.payload[1].appliers
+      }
     default:
       return state;
   }

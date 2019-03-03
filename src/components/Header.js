@@ -25,12 +25,12 @@ const LoggedInView = props => {
         <a href="index.html" className="nav-link hdfo hh w-nav-link">Home</a>
         <a href="#" className="nav-link hdfo hh w-nav-link">Organizations</a>
         <div data-delay="0" className="dropdown-copy w-dropdown">
-          <div className="dropdown-toggle-copy w-dropdown-toggle" onClick={props.onClickLogout}>
+          <div className="dropdown-toggle-copy w-dropdown-toggle" data-toggle="dropdown" >
             <div className="div-block-31 noc">
               <div>{ props.currentUser.username.slice(0, 1).toUpperCase() }</div>
             </div>
           </div>
-          <nav className="dropdown-list-copy w-dropdown-list">
+          <nav className="dropdown-menu dropdown-list">
             <a href="#" className="text-block-10 _0-copy w-dropdown-link">Settings</a>
             <a href="#" className="text-block-10 _0-copy showund w-dropdown-link">Upgrade</a>
             <a href="#" className="text-block-10 _0-copy w-dropdown-link" onClick={props.onClickLogout} >Log Out</a>

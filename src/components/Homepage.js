@@ -47,33 +47,30 @@ class Homepage extends React.Component {
   render() {
     return (
       <div className="dashboard-page">
-        <div className="container page">
-          <div className="div-block-212">
-            <div className="div-block-213">
-              <h2 className="heading-4">Create time-saving automated video interviews.</h2>
-              <div className="div-block-222">
-                <div className="div-block-208"><img src={ lockImg } width="29" alt="" className="image-50" />
-                  <div>Privacy-focused</div>
-                </div>
-                <div className="div-block-208"><img src={ folderImg } width="29" alt="" className="image-50" />
-                  <div>1GB Free</div>
-                </div>
-                <div className="div-block-208"><img src={ monitorImg} width="29" alt="" className="image-50" />
-                  <div>Video,Voice &amp; Screenshare</div>
-                </div>
+        <div className="div-block-212">
+          <div className="div-block-213">
+            <h2 className="heading-4">Create time-saving automated video interviews.</h2>
+            <div className="div-block-222">
+              <div className="div-block-208"><img src={ lockImg } width="29" alt="" className="image-50" />
+                <div>Privacy-focused</div>
               </div>
-              <div className="div-block-215">
-                <Link to="/register" className="button-2 csh w-inline-block">
-                    <div>Get Started</div>
-                </Link>
+              <div className="div-block-208"><img src={ folderImg } width="29" alt="" className="image-50" />
+                <div>1GB Free</div>
               </div>
-              <div className="div-block-216">
-                <div>Only you can see the interview</div>
+              <div className="div-block-208"><img src={ monitorImg} width="29" alt="" className="image-50" />
+                <div>Video,Voice &amp; Screenshare</div>
               </div>
+            </div>
+            <div className="div-block-215">
+              <Link to="/register" className="button-2 csh w-inline-block">
+                  <div>Get Started</div>
+              </Link>
+            </div>
+            <div className="div-block-216">
+              <div>Only you can see the interview</div>
             </div>
           </div>
         </div>
-
       </div>
     );
   }

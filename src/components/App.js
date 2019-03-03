@@ -13,14 +13,13 @@ import Profile from '../components/Profile';
 import InterviewProcess from '../components/InterviewProcess';
 import InterviewView from '../components/InterviewView';
 import Invite from '../components/Invite';
+import Applier from '../components/Applier';
 import Thankyou from '../components/Thankyou';
 import ProfileFavorites from '../components/ProfileFavorites';
 import Register from '../components/Register';
 import Settings from '../components/Settings';
 import { store } from '../store';
 import { push } from 'react-router-redux';
-// import '../assets/css/style.css';
-// import '../assets/css/custom.css';
 import '../assets/css/normalize.css';
 import '../assets/css/webflow.css';
 import '../assets/css/finco12.webflow.css';
@@ -82,6 +81,7 @@ class App extends React.Component {
           <Route path="/interview/:slug" component={Interview} />
           <Route path="/new-interview" component={NewInterview} />
           <Route path="/invite/:slug" component={Invite} />
+          <Route path="/applier/:slug/:id" component={Applier} />
           <Route path="/review/:applier" component={InterviewView} />
           </Switch>
         </div>

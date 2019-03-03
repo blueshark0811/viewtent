@@ -78,6 +78,8 @@ const Interviews = {
     requests.post(`/interviews/${slug}/appliers`, { applier }),
   appliersForInterview: slug =>
     requests.get(`/interviews/${slug}/appliers`),
+  applierOneForInterview: (slug, applierId) =>
+    requests.get(`/interviews/${slug}/appliers/${applierId}`),
   inviteAdd : (slug, email) => 
     requests.post(`/interviews/${slug}/invite`, { email : email }),
   inviteRemove : (slug, email) => 

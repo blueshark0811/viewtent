@@ -45,10 +45,8 @@ class Thankyou extends React.Component {
   render() {
     return (
       <div className="thankyou-page">
-        <div className="container page">
-          <div className="page-content">
-            <div className="text-block-14">Thank you for your apply. <br /> <br />We will review your application and contact you later.</div>
-          </div>
+        <div className="page-content">
+          <div className="text-block-14">Thank you for your apply. <br /> <br />We will review your application and contact you later.</div>
         </div>
       </div>
     );

@@ -97,68 +97,66 @@ class Editor extends React.Component {
   render() {
     return (
       <div className="new-interview-page">
-        <div className="container page">
-          <div data-collapse="medium" data-animation="default" data-duration="400" className="navbar-2 nosha w-nav">
-            <img src={ backImg } width="29" alt="" className="image-51" onClick={ () => { this.props.history.goBack() }}/>
-          </div>
-          <div className="div-block-43-copy">
-            <div className="text-block-13">New Interview</div>
-            <div className="div-block-44">
-              <div className="w-form">
-                <form id="email-form" name="email-form" data-name="Email Form">
-                  <div className="text-block-39">Name of Interview (Optional)</div>
-                  <ListErrors errors={this.props.errors} />
-                  <input
-                    className="textfield ful w-input"
-                    type="text"
-                    placeholder="Name"
-                    value={this.state.title}
-                    onChange={ (e) => {this.setState({ title : e.target.value})} } 
-                    required />
-                  <div className="text-block-39">Require</div>
-                  <div className="div-block-206">
-                    <div className="div-block-208" onClick={ () => this.setState({ require : 'voice' }) }>
-                      <div className="div-block-207">
-                        { this.state.require == 'voice'? <img src={ checkCircleImg } alt="" />:'' }
-                      </div>
-                      <div>Voice</div>
+        <div data-collapse="medium" data-animation="default" data-duration="400" className="navbar-2 nosha w-nav">
+          <img src={ backImg } width="29" alt="" className="image-51" onClick={ () => { this.props.history.goBack() }}/>
+        </div>
+        <div className="div-block-43-copy">
+          <div className="text-block-13">New Interview</div>
+          <div className="div-block-44">
+            <div className="w-form">
+              <form id="email-form" name="email-form" data-name="Email Form">
+                <div className="text-block-39">Name of Interview (Optional)</div>
+                <ListErrors errors={this.props.errors} />
+                <input
+                  className="textfield ful w-input"
+                  type="text"
+                  placeholder="Name"
+                  value={this.state.title}
+                  onChange={ (e) => {this.setState({ title : e.target.value})} } 
+                  required />
+                <div className="text-block-39">Require</div>
+                <div className="div-block-206">
+                  <div className="div-block-208" onClick={ () => this.setState({ require : 'voice' }) }>
+                    <div className="div-block-207">
+                      { this.state.require == 'voice'? <img src={ checkCircleImg } alt="" />:'' }
                     </div>
-                    <div className="div-block-208" onClick={ () => this.setState({ require : 'webcam' })}>
-                      <div className="div-block-207">
-                        { this.state.require == 'webcam'? <img src={ checkCircleImg } alt="" />:'' }
-                      </div>
-                      <div>Webcam</div>
-                    </div>
+                    <div>Voice</div>
                   </div>
-                  <div className="text-block-39">Allow interviews from</div>
-                  <div className="div-block-206">
-                    <div className="div-block-208" onClick={ () => this.setState({ allow : 'invited' })}>
-                      <div className="div-block-207">
-                        { this.state.allow == 'invited'? <img src={ checkCircleImg } alt="" />:'' }
-                      </div>
-                      <div>Invited Only</div>
+                  <div className="div-block-208" onClick={ () => this.setState({ require : 'webcam' })}>
+                    <div className="div-block-207">
+                      { this.state.require == 'webcam'? <img src={ checkCircleImg } alt="" />:'' }
                     </div>
-                    <div className="div-block-208" onClick={ () => this.setState({ allow : 'anyone' })}>
-                      <div className="div-block-207">
-                        { this.state.allow == 'anyone'? <img src={ checkCircleImg } alt="" />:'' }
-                      </div>
-                      <div>Anyone with the link</div>
+                    <div>Webcam</div>
+                  </div>
+                </div>
+                <div className="text-block-39">Allow interviews from</div>
+                <div className="div-block-206">
+                  <div className="div-block-208" onClick={ () => this.setState({ allow : 'invited' })}>
+                    <div className="div-block-207">
+                      { this.state.allow == 'invited'? <img src={ checkCircleImg } alt="" />:'' }
                     </div>
+                    <div>Invited Only</div>
                   </div>
-                  <div className="button-2 white wdropdown formdropdown hide">
-                    <div>Anyone with link</div>
-                    <div className="icon im-copy w-icon-dropdown-toggle"></div>
+                  <div className="div-block-208" onClick={ () => this.setState({ allow : 'anyone' })}>
+                    <div className="div-block-207">
+                      { this.state.allow == 'anyone'? <img src={ checkCircleImg } alt="" />:'' }
+                    </div>
+                    <div>Anyone with the link</div>
                   </div>
-                  <button 
-                    onClick={this.submitForm}
-                    disabled={this.props.inProgress}
-                    className="button-2 form-button w-inline-block"
-                  >
-                    Create
-                    <img src="https://uploads-ssl.webflow.com/5c5f614abad523f096147dd0/5c5f699016bb6e1e8e498514_icons8-forward-90.png" width="24" alt="" className="button-icon" />
-                  </button>
-                </form>
-              </div>
+                </div>
+                <div className="button-2 white wdropdown formdropdown hide">
+                  <div>Anyone with link</div>
+                  <div className="icon im-copy w-icon-dropdown-toggle"></div>
+                </div>
+                <button 
+                  onClick={this.submitForm}
+                  disabled={this.props.inProgress}
+                  className="button-2 form-button w-inline-block"
+                >
+                  Create
+                  <img src="https://uploads-ssl.webflow.com/5c5f614abad523f096147dd0/5c5f699016bb6e1e8e498514_icons8-forward-90.png" width="24" alt="" className="button-icon" />
+                </button>
+              </form>
             </div>
           </div>
         </div>

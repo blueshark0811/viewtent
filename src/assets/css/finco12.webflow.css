@@ -8,6 +8,11 @@ body {
   line-height: 20px;
 }
 
+a:hover {
+  text-decoration: none;
+  color: white;
+}
+
 .video-content {
   padding: 40px 120px;
   margin: auto;
@@ -49,6 +54,19 @@ body {
 
 a {
   text-decoration: none;
+}
+
+.dropdown-menu {
+  left: -120px;
+  z-index: 20;
+}
+
+.dropdown-toggle{
+  z-index: 10;
+}
+
+.dropdown-backdrop {
+  z-index: 0;
 }
 
 .div-block-6 {

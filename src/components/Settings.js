@@ -123,28 +123,26 @@ class Settings extends React.Component {
   render() {
     return (
       <div className="settings-page">
-        <div className="container page">
-          <div className="row">
-            <div className="col-md-6 offset-md-3 col-xs-12">
+        <div className="row">
+          <div className="col-md-6 offset-md-3 col-xs-12">
 
-              <h1 className="text-xs-center">Profile</h1>
-              <br />
+            <h1 className="text-xs-center">Profile</h1>
+            <br />
 
-              <ListErrors errors={this.props.errors}></ListErrors>
+            <ListErrors errors={this.props.errors}></ListErrors>
 
-              <SettingsForm
-                currentUser={this.props.currentUser}
-                onSubmitForm={this.props.onSubmitForm} />
+            <SettingsForm
+              currentUser={this.props.currentUser}
+              onSubmitForm={this.props.onSubmitForm} />
 
-              <hr />
+            <hr />
 
-              <button
-                className="btn btn-outline-danger"
-                onClick={this.props.onClickLogout}>
-                Or click here to logout.
-              </button>
+            <button
+              className="btn btn-outline-danger"
+              onClick={this.props.onClickLogout}>
+              Or click here to logout.
+            </button>
 
-            </div>
           </div>
         </div>
       </div>
