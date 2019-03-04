@@ -215,7 +215,7 @@ class Interview extends React.Component {
                               <img src={ moreImg } width="62" alt="" className="menuimage" />
                             </div>
                             <nav className="dropdown-menu dropdown-list">
-                              <p className="text-block-10 _0-copy w-dropdown-link"
+                              <a href="" className="text-block-10 _0-copy w-dropdown-link"
                                 onClick={ () => { 
                                   this.props.history.push({
                                       pathname: `/review/${this.props.slug}-${applier.slug}`, 
@@ -228,9 +228,9 @@ class Interview extends React.Component {
                                 }
                               >
                                 View
-                              </p>
-                              <p className="text-block-10 _0-copy showund w-dropdown-link">Message</p>
-                              <p href="#" className="text-block-10 _0-copy w-dropdown-link">Delete</p>
+                              </a>
+                              <a href="" className="text-block-10 _0-copy showund w-dropdown-link">Message</a>
+                              <a href="" className="text-block-10 _0-copy w-dropdown-link">Delete</a>
                             </nav>
                           </div>
                         </div>

@@ -59,16 +59,18 @@ a {
 
 .dropdown-menu {
   left: -120px;
-  z-index: 20;
-}
-
-.dropdown-toggle{
-  z-index: 10;
 }
 
 .dropdown-backdrop {
   z-index: 0;
 }
+
+.clipboard-option {
+  margin-right: 0px;
+  margin-left: 0px;
+  width: 100%;
+  background-color: #fff;
+}  
 
 .div-block-6 {
   display: -webkit-box;

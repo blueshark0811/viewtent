@@ -9,6 +9,7 @@ import {
 } from '../constants/actionTypes';
 import dummyImg from '../assets/images/monitor.svg';
 import moreImg from '../assets/images/icons8-more-90_1icons8-more-90.png';
+import Clipboard from 'react-clipboard.js';
 
 const Promise = global.Promise;
 
@@ -107,7 +108,9 @@ class Dashboard extends React.Component {
                           <Link to={`/interview/${interview.slug}`} className="text-block-10 _0-copy w-dropdown-link">
                             View
                           </Link>
-                          <a href="#" className="text-block-10 _0-copy showund w-dropdown-link">Copy link</a>
+                          <Clipboard data-clipboard-text={ window.location.href.replace('/dashboard', `/interview/${interview.slug}`) } className="text-block-10 _0-copy showund w-dropdown-link clipboard-option">
+                            Copy link
+                          </Clipboard>
                           <a href="#" className="text-block-10 _0-copy w-dropdown-link">Delete</a></nav>
                       </div>
                     </div>
