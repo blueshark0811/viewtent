@@ -8,6 +8,7 @@ body {
   line-height: 20px;
 }
 
+a:focus, 
 a:hover {
   text-decoration: none;
   color: white;
@@ -3467,7 +3468,7 @@ a {
   .nav-menu {
     padding: 19px 40px 30px;
     background-color: #fff;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .17);
+    /*box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .17);*/
   }
   .nav-link {
     margin-bottom: 23px;
