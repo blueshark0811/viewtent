@@ -7,7 +7,7 @@ import {
   APPLIER_PAGE_LOADED
 } from '../constants/actionTypes';
 import backImg from '../assets/images/icons8-chevron-left-90_1icons8-chevron-left-90.png';
-import userImg from '../assets/images/user.svg';
+import userImg from '../assetasdfasfasds/images/user.svg';
 import removeImg from '../assets/images/x.svg';
 
 
