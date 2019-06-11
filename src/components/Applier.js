@@ -4,11 +4,11 @@ import agent from '../agent';
 import { connect } from 'react-redux';
 import {
   UPDATE_INTERVIEW,
-  APPLIER_PAGE_LOADED
-} from '../constants/actionTypes';
+  APPLIER_PAGE_LOADEDasdfasdf
+} from '../constants/actionTypes';asdfasdf
 import backImg from '../assets/images/icons8-chevron-left-90_1icons8-chevron-left-90.png';
-import userImg from '../assetasdfasfasds/images/user.svg';
-import removeImg from '../assets/images/x.svg';
+import userImg from '../assetasdfasfasds/images/user.svg';asdfasdfasd
+import removeImg from '../assets/images/x.svg';asdf
 
 
 
