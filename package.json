@@ -4,7 +4,7 @@
   "private": true,
   "devDependencies": {
     "cross-env": "^5.1.4",
-    "react-scripts": "1.1.1"
+    "react-scripts": "5.0.1"
   },
   "dependencies": {
     "audiobuffer-to-wav": "^1.0.0",
@@ -20,7 +20,7 @@
     "react-google-login": "^5.0.2",
     "react-multimedia-capture": "^1.2.3",
     "react-redux": "^5.0.7",
-    "react-responsive-music-player": "^0.3.0",
+    "react-responsive-music-player": "^0.4.3",
     "react-router": "^4.1.2",
     "react-router-dom": "^4.1.2",
     "react-router-redux": "^5.0.0-alpha.6",
